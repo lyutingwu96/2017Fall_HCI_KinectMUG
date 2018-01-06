@@ -1964,7 +1964,7 @@ MonoBehaviour:
   PreThree: {fileID: 1528027273831266, guid: 01cb8ade1d8384623b60d8984f87e862, type: 2}
   PreFour: {fileID: 1687408083862910, guid: 0ca2314f8c7b844e5b43c21ca6170b83, type: 2}
   PreFive: {fileID: 1984022593674862, guid: e6179bbeb27734e4dbafdc0c6190d600, type: 2}
-  adjustTime: 0.1
+  adjustTime: 0
   audioSource: {fileID: 1792346577}
 --- !u!114 &1044393845 stripped
 MonoBehaviour:
@@ -2390,7 +2390,12 @@ Prefab:
         type: 2}
       propertyPath: TxtFile
       value: 
-      objectReference: {fileID: 4900000, guid: d6fcc3d20fe6d453887509b3e8debc20, type: 3}
+      objectReference: {fileID: 4900000, guid: ba065874412d9e048a9f89b4cf990aa2, type: 3}
+    - target: {fileID: 114657737283988026, guid: b1a7702e5bee141dbbb568fdf7f47009,
+        type: 2}
+      propertyPath: m_Text
+      value: Pon Pon Pon
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b1a7702e5bee141dbbb568fdf7f47009, type: 2}
   m_IsPrefabParent: 0
@@ -3076,7 +3081,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d6ac63c2eb2174575b5ae75a438c49ad, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 542a7b160d96ba94e9a8265bf4254274, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
