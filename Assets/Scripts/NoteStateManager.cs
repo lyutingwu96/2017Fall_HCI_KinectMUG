@@ -20,7 +20,6 @@ public class NoteStateManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		index = 0;
-		m.GetComponent<Animator> ().SetBool ("miss", true);
 	}
 	
 	// Update is called once per frame
@@ -59,18 +58,18 @@ public class NoteStateManager : MonoBehaviour {
 	}
 
 	public void printState(int State){
-		m.GetComponent<Animator> ().SetBool ("miss", false);
-		g.GetComponent<Animator>().SetBool ("good", false);
-		p.GetComponent<Animator>().SetBool ("perfect", false);
+		m.GetComponent<Animator> ().ResetTrigger("miss");
+		g.GetComponent<Animator>().ResetTrigger("good");
+		p.GetComponent<Animator>().ResetTrigger("perfect");
 
 		if (State == 1) {
-			m.GetComponent<Animator> ().SetBool ("miss", true);
+			m.GetComponent<Animator> ().SetTrigger("miss");
 
 		} else if (State == 2) {
-			g.GetComponent<Animator>().SetBool ("good", true);
+			g.GetComponent<Animator>().SetTrigger("good");
 
 		} else if (State == 3) {
-			p.GetComponent<Animator>().SetBool ("perfect", true);
+			p.GetComponent<Animator>().SetTrigger("perfect");
 
 		}
 	}
