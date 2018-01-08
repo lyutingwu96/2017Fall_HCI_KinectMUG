@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224077472038880254}
   - component: {fileID: 222574910817218024}
   - component: {fileID: 114695834782812656}
-  - component: {fileID: 95661438661034988}
+  - component: {fileID: 95535727556401474}
   m_Layer: 8
   m_Name: Miss 3
   m_TagString: Untagged
@@ -29,7 +29,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!95 &95661438661034988
+--- !u!95 &95535727556401474
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -38,7 +38,7 @@ Animator:
   m_GameObject: {fileID: 1627213688220230}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 74bff22d117a945d688f3ef2e03f944a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4477d765d4a154b61a34445bf45d5c28, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

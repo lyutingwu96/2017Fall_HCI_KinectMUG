@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224276709336030298}
   - component: {fileID: 222357996844507040}
   - component: {fileID: 114811304494100016}
-  - component: {fileID: 95622829382245188}
+  - component: {fileID: 95552839381695376}
   m_Layer: 8
   m_Name: Good 4
   m_TagString: Untagged
@@ -29,7 +29,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!95 &95622829382245188
+--- !u!95 &95552839381695376
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -38,7 +38,7 @@ Animator:
   m_GameObject: {fileID: 1169009183056382}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f83ef7477fb342218c8fd4baf416fdf, type: 2}
+  m_Controller: {fileID: 9100000, guid: 204a7f040ca6542e3a36744c9448fe0d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
