@@ -4,16 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayingManager : MonoBehaviour {
-	public NoteStateManager FixedOne;
-	public NoteStateManager FixedTwo;
-	public NoteStateManager FixedThree;
-	public NoteStateManager FixedFour;
-	public NoteStateManager FixedFive;
 
 	[SerializeField] private Text ScoreText;
 	public int GoodScore;
 	public int PerfectScore;
-	int scoreState;
+
 	int score = 0;
 
 	// Use this for initialization
@@ -24,32 +19,11 @@ public class PlayingManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Q)) {
-			scoreState = FixedOne.GetNoteState ();
+		
+	}
 
-		}
-		if(Input.GetKeyDown (KeyCode.W)){
-			scoreState = FixedTwo.GetNoteState ();
-
-		}
-		if(Input.GetKeyDown (KeyCode.E)){
-			scoreState = FixedThree.GetNoteState ();
-
-		}
-		if (Input.GetKeyDown (KeyCode.R)) {
-			scoreState = FixedFour.GetNoteState ();
-
-		}
-		if(Input.GetKeyDown (KeyCode.T)){
-			scoreState = FixedFive.GetNoteState ();
-		}
-
-		if (scoreState == 2) {
-			score = score + GoodScore;
-		} else if (scoreState == 3) {
-			score = score + PerfectScore;
-		}
+	public void addScore(int newScore){
+		score = score + newScore;
 		ScoreText.text = score.ToString();
-		scoreState = 0;
 	}
 }
