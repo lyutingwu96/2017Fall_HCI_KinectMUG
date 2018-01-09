@@ -27,16 +27,20 @@ public class PlayingManager : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Q)) {
 			scoreState = FixedOne.GetNoteState ();
 
-		}else if(Input.GetKeyDown (KeyCode.W)){
+		}
+		if(Input.GetKeyDown (KeyCode.W)){
 			scoreState = FixedTwo.GetNoteState ();
 
-		}else if(Input.GetKeyDown (KeyCode.E)){
+		}
+		if(Input.GetKeyDown (KeyCode.E)){
 			scoreState = FixedThree.GetNoteState ();
 
-		}else if(Input.GetKeyDown (KeyCode.R)){
+		}
+		if (Input.GetKeyDown (KeyCode.R)) {
 			scoreState = FixedFour.GetNoteState ();
 
-		}else if(Input.GetKeyDown (KeyCode.T)){
+		}
+		if(Input.GetKeyDown (KeyCode.T)){
 			scoreState = FixedFive.GetNoteState ();
 		}
 

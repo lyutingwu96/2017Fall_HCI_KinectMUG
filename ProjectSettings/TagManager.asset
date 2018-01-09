@@ -16,8 +16,8 @@ TagManager:
   - 
   - fixed
   - move
-  - 
-  - 
+  - Hand
+  - handNoteCollider
   - 
   - 
   - 
@@ -41,4 +41,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: hand
+    uniqueID: 1295831683
     locked: 0
