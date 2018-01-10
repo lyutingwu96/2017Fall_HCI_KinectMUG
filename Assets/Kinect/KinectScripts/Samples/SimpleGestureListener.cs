@@ -5,6 +5,7 @@ using System;
 
 public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListenerInterface
 {
+
 	public bool[] Gesture = new bool[4];
 	// GUI Text to display the gesture messages.
 	public GUIText GestureInfo;
@@ -17,7 +18,7 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	{
 		// as an example - detect these user specific gestures
 		KinectManager manager = KinectManager.Instance;
-
+		Debug.Log ("User Detected");
 		//manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
 		//manager.DetectGesture(userId, KinectGestures.Gestures.Squat);
 
@@ -55,10 +56,12 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 	{
 		//string gestureText = gesture;
 		string gestureText = gesture +"";
+		Debug.Log ("|"+gestureText+"|");
 		if (GestureInfo != null) {
 			GestureInfo.GetComponent<GUIText> ().text = gestureText;
-			Debug.Log (gestureText);
+
 			if (gestureText== "SwipeUp"){
+				Debug.Log ("Set SWIPREIP");
 				Gesture [0] = true;}
 			else if (gestureText == "RaiseRightHand"){
 				Gesture [1] = false;}
@@ -68,7 +71,15 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 				Gesture [3] = true;}
 
 		}
-		
+
+		for (int i = 0; i < 4; i++) {
+			if (Gesture [i]) {
+				Debug.Log ("QQQQ");
+				Debug.Log (i);
+			} else {
+				Debug.Log ("ALLMISS");
+			}
+		}
 		progressDisplayed = false;	
 		
 		return true;

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 [RequireComponent(typeof(AudioSource))]
 public class Audio : MonoBehaviour {
+	public GameObject MainCamera;
+	private bool isGestureDectected = true;
 	public List<AudioClip> clips;
 	private int soundtrack;
 	private bool[] Gesture = new bool[4];
@@ -54,6 +56,7 @@ public class Audio : MonoBehaviour {
 	[SerializeField]private Text MovementText=null;
 	[SerializeField]private Text nowSongName=null;
 	[SerializeField]private Text nowSongNameGame=null;
+
 
 
 	// Use this for initialization
@@ -134,7 +137,6 @@ public class Audio : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		soundtrack = 0;
-
 		songName [0] = "gloryday";
 		songName [1] = "PONPONPON";
 		songName [2] = "SecondHeaven";
@@ -152,25 +154,38 @@ public class Audio : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (!isGestureDectected) {
+			return;
+		}
 		Gesture = GetComponent<SimpleGestureListener> ().Gesture;
-
 		if (Gesture [0]) {
 			MovementText.text = "Swipe Up";
 	
-			Debug.Log ("0");
+			Debug.Log ("GET0");
 			GetComponent<SimpleGestureListener> ().Gesture [0] = false;
 
 			if (isShowing == true) {
 				aud.Stop ();
 				isShowing = !isShowing;
-				menu.SetActive (isShowing);
-
-			} 
-			else {
-				isShowing = !isShowing;
-				menu.SetActive (isShowing);
+				menu.SetActive (false);
+				canvas1.SetActive (true);
+				canvas2.SetActive (true);
 				play (soundtrack);
+				game.SetActive (true);
+				isGestureDectected = false;
 
+
+
+
+			}
+			else {
+				aud.Stop ();
+				isShowing = !isShowing;
+				menu.SetActive (true);
+				canvas1.SetActive (false);
+				canvas2.SetActive (false);
+				play (soundtrack);
+				game.SetActive (false);
 			}
 
 
@@ -182,7 +197,7 @@ public class Audio : MonoBehaviour {
 
 				isPlaying = true;
 			}
-			Debug.Log ("2");
+			Debug.Log ("GET2");
 			GetComponent<SimpleGestureListener> ().Gesture [2] = false;
 			aud.Stop ();
 			soundtrack =(soundtrack+3)%4;
@@ -197,7 +212,7 @@ public class Audio : MonoBehaviour {
 
 				isPlaying = true;
 			}
-			Debug.Log ("3");
+			Debug.Log ("GET3");
 			GetComponent<SimpleGestureListener> ().Gesture [3] = false;
 			aud.Stop ();
 			soundtrack =(soundtrack+1)%4;
@@ -230,8 +245,14 @@ public class Audio : MonoBehaviour {
 
 			}
 			else {
+				aud.Stop ();
 				isShowing = !isShowing;
-				menu.SetActive (true);			}
+				menu.SetActive (true);
+				canvas1.SetActive (false);
+				canvas2.SetActive (false);
+				play (soundtrack);
+				game.SetActive (false);		
+			}
 		}
 	}
 	void play(int num){
