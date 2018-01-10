@@ -7,7 +7,7 @@ public class Audio : MonoBehaviour {
 	public GameObject MainCamera;
 	private bool isGestureDectected = true;
 	public List<AudioClip> clips;
-	private int soundtrack;
+	public int soundtrack;
 	private bool[] Gesture = new bool[4];
 	private string[] songName=new string[4];
 	private AudioSource aud;
@@ -52,6 +52,7 @@ public class Audio : MonoBehaviour {
 	public Animator p5;
 	public Animator g5;
 	public Animator m5;
+	bool StartDebug = false;
 
 	[SerializeField]private Text MovementText=null;
 	[SerializeField]private Text nowSongName=null;
@@ -157,6 +158,7 @@ public class Audio : MonoBehaviour {
 		if (!isGestureDectected) {
 			return;
 		}
+
 		Gesture = GetComponent<SimpleGestureListener> ().Gesture;
 		if (Gesture [0]) {
 			MovementText.text = "Swipe Up";
@@ -239,7 +241,8 @@ public class Audio : MonoBehaviour {
 				menu.SetActive (false);
 				canvas1.SetActive (true);
 				canvas2.SetActive (true);
-				play (soundtrack);
+				StartDebug = true;
+				//play (soundtrack);
 				game.SetActive (true);
 
 
