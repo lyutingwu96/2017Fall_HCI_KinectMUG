@@ -17,7 +17,11 @@ public class CreateNotes : MonoBehaviour {
 	public NoteStateManager FixedThree;
 	public NoteStateManager FixedFour;
 	public NoteStateManager FixedFive;
-
+	public Audio aud;
+	public AudioSource AudioOne;
+	public AudioSource AudioTwo;
+	public AudioSource AudioThree;
+	public AudioSource AudioFour;
 //	int len = MUG_Data.len;
 	int k = 1;
 	float Spb;
@@ -25,17 +29,27 @@ public class CreateNotes : MonoBehaviour {
 	public float adjustTime = 0.0f;
 
 
-	public AudioSource audioSource;
+	AudioSource audioSource;
 	// Use this for initialization
 
 	void Awake(){
 		Application.targetFrameRate = 200;
 		Spb = 60.0f / MUG_Data.BPM;
 		fourSpb = Spb * 4;
+		if (aud.soundtrack == 0) {
+			audioSource = AudioOne;
+		}else if (aud.soundtrack == 1) {
+			audioSource = AudioTwo;
+		}else if (aud.soundtrack == 2) {
+			audioSource = AudioThree;
+		}else if (aud.soundtrack == 3) {
+			audioSource = AudioFour;
+		}
+		audioSource.Play ();
 	}
 
 	void Start () {
-		//Debug.Log(fourSpb);
+		
 	}
 	
 	// Update is called once per frame
@@ -43,7 +57,7 @@ public class CreateNotes : MonoBehaviour {
 
 		float temp = audioSource.time + adjustTime + fourSpb - MUG_Data.arrayOfSecond [k];
 		//Debug.Log ("temp:" + temp);
-		//Debug.Log ("Source:" + audioSource.time + "   MUG_Data:" + MUG_Data.arrayOfSecond [k] + "   Minus:" + temp);
+		Debug.Log ("Source:" + audioSource.time + "   MUG_Data:" + MUG_Data.arrayOfSecond [k] + "   Minus:" + temp);
 		if ((temp < 0.1) && (temp > 0)) {
 			//Debug.Log ("Source:" + audioSource.time + "   MUG_Data:" + MUG_Data.arrayOfSecond [k] + "   Minus:" + temp);
 			//Debug.Log ("noteNUM: " + k);
