@@ -19,6 +19,7 @@ class Application(Frame):
         self.BPM=0
         self.notes = [[0,0,0,0,0,0]]
         self.starttime = 0
+        self.noteCount=0
         self.parent.bind('<Key>',self.press)
         self.GUI()
     def bpm(self):
@@ -27,6 +28,7 @@ class Application(Frame):
         self.BPM= tempo(onset_envelope=onset_env, sr=sr)[0]
         print 'bpm : ' ,self.BPM
     def play(self):
+        self.noteCount = 0
         self.notes = [[0,0,0,0,0,0]]
         pygame.mixer.music.play()
         self.starttime= time.time()
@@ -42,23 +44,29 @@ class Application(Frame):
         	self.notes.append([time,0,0,0,0,0])
         if char[1] == 'q':
             self.notes[-1][1] = 1 
+            self.noteCount +=1
             print self.notes[-1][0], self.notes[-1][1:]
         if char[1] == 'w':
             self.notes[-1][2] = 1
+            self.noteCount +=1
             print self.notes[-1][0], self.notes[-1][1:]
         if char[1] == 'e':
             self.notes[-1][3] = 1
+            self.noteCount +=1
             print self.notes[-1][0], self.notes[-1][1:]
         if char[1] == 'o':
             self.notes[-1][4] = 1
+            self.noteCount +=1
             print self.notes[-1][0], self.notes[-1][1:]
         if char[1] == 'p':
             self.notes[-1][5] = 1
+            self.noteCount +=1
             print self.notes[-1][0], self.notes[-1][1:]
     def save(self):
     	print "write self.BPM",self.BPM
         with open(file[:-3]+'txt','w') as f:
             f.write(str(self.BPM)+'\n')
+            f.write(str(1000000/self.noteCount)+'\n')
             for i in self.notes:
                 for j in i:
                     f.write(str(j)+',')
