@@ -12,6 +12,7 @@ public class KinectOverlayer : MonoBehaviour
 	public KinectWrapper.NuiSkeletonPositionIndex TrackedJoint = KinectWrapper.NuiSkeletonPositionIndex.HandRight;
 	public GameObject OverlayObject;
 	public float smoothFactor = 5f;
+	public float yOffset= 1.0f;
 	
 	public GUIText debugText;
 
@@ -75,6 +76,9 @@ public class KinectOverlayer : MonoBehaviour
 						{
 							Vector3 vPosOverlay = Camera.main.ViewportToWorldPoint(new Vector3(scaleX, scaleY, distanceToCamera));
 							OverlayObject.transform.position = Vector3.Lerp(OverlayObject.transform.position, vPosOverlay, smoothFactor * Time.deltaTime);
+							Vector3 pos = OverlayObject.transform.position;
+
+							OverlayObject.transform.position = Vector3.Lerp(pos,new Vector3(pos.x,pos.y+yOffset,pos.z), smoothFactor * Time.deltaTime);
 						}
 					}
 				}
