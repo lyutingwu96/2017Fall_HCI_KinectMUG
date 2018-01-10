@@ -30,11 +30,11 @@ public class CreateNotes : MonoBehaviour {
 
 	void Awake(){
 		Application.targetFrameRate = 200;
+		Spb = 60.0f / MUG_Data.BPM;
+		fourSpb = Spb * 4;
 	}
 
 	void Start () {
-		Spb = 60.0f / MUG_Data.BPM;
-		fourSpb = Spb * 4;
 		//Debug.Log(fourSpb);
 	}
 	

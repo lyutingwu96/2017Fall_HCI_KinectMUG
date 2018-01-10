@@ -12,7 +12,7 @@ public class readFile : MonoBehaviour {
 	public TextAsset TxtFile;   //建立TextAsset
 	private string Mytxt;    //用来存放文本内容
 	int len=0;
-	string songName;
+	string songName; //111
 	float BPM=0;
 	float[] arrayOfSecond;
 	bool[] note1;
@@ -22,6 +22,7 @@ public class readFile : MonoBehaviour {
 	bool[] note5;
 	public MUG_Data fun;
 
+	//111
 	public Animator p1;
 	public Animator g1;
 	public Animator m1;
@@ -86,8 +87,11 @@ public class readFile : MonoBehaviour {
 		MUG_Data.note3 = note3;
 		MUG_Data.note4 = note4;
 		MUG_Data.note5 = note5;
-		fun.debugPrint ();
+		//fun.debugPrint ();
 
+
+
+		//111
 		p1.speed = 1.0f * MUG_Data.BPM;
 		g1.speed = 1.0f * MUG_Data.BPM;
 		m1.speed = 1.0f * MUG_Data.BPM;

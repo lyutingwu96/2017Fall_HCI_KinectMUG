@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MUG_Data : MonoBehaviour {
-
 	public static float BPM=0;
+	public static int perfectScore;
 	public static float[] arrayOfSecond;
 	public static bool[] note1;
 	public static bool[] note2;
@@ -21,11 +21,11 @@ public class MUG_Data : MonoBehaviour {
 	void Update () {
 		
 	}
-	public void debugPrint(){
+	public void debugPrint(string name){
 		Debug.Log ("BPM:"+BPM);
-		/*for (int k = 0; k < len-1; k++) {
+		//for (int k = 0; k < len-1; k++) {
 
-		Debug.Log ("time:"+arrayOfSecond[k]+" note:"+note1[k]+" "+note2[k]+" "+note3[k]+" "+note4[k]+" "+note5[k]);
-		}*/
-	} 
+			//Debug.Log ("time:"+arrayOfSecond[k]+" note:"+note1[k]+" "+note2[k]+" "+note3[k]+" "+note4[k]+" "+note5[k]);
+		//}
+	}
 }

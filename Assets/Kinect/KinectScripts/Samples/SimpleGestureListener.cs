@@ -2,8 +2,10 @@ using UnityEngine;
 using System.Collections;
 using System;
 
+
 public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListenerInterface
 {
+	public bool[] Gesture = new bool[4];
 	// GUI Text to display the gesture messages.
 	public GUIText GestureInfo;
 	
@@ -16,70 +18,58 @@ public class SimpleGestureListener : MonoBehaviour, KinectGestures.GestureListen
 		// as an example - detect these user specific gestures
 		KinectManager manager = KinectManager.Instance;
 
-		manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
-		manager.DetectGesture(userId, KinectGestures.Gestures.Squat);
+		//manager.DetectGesture(userId, KinectGestures.Gestures.Jump);
+		//manager.DetectGesture(userId, KinectGestures.Gestures.Squat);
 
-//		manager.DetectGesture(userId, KinectGestures.Gestures.Push);
-//		manager.DetectGesture(userId, KinectGestures.Gestures.Pull);
+//		manager.DetectGesture(userId, KinectGestures.Gestures.Push)
+	//	manager.DetectGesture(userId, KinectGestures.Gestures.RaiseRightHand);
+	//	manager.DetectGesture(userId, KinectGestures.Gestures.RaiseLeftHand);
+
+	//	manager.DetectGesture(userId, KinectWrapper.Gestures.SwipeRight);
+	//	manager.DetectGesture(userId, KinectWrapper.Gestures.SwipeLeft);
 		
-//		manager.DetectGesture(userId, KinectWrapper.Gestures.SwipeUp);
-//		manager.DetectGesture(userId, KinectWrapper.Gestures.SwipeDown);
-		
-		if(GestureInfo != null)
-		{
-			GestureInfo.GetComponent<GUIText>().text = "SwipeLeft, SwipeRight, Jump or Squat.";
-		}
+	//	if(GestureInfo != null)
+	//	{
+	//		GestureInfo.GetComponent<GUIText>().text = "Waiting for User ...";
+	//	}
 	}
 	
 	public void UserLost(uint userId, int userIndex)
 	{
 		if(GestureInfo != null)
 		{
-			GestureInfo.GetComponent<GUIText>().text = string.Empty;
+			GestureInfo.GetComponent<GUIText>().text = "User Lost";
 		}
 	}
 
 	public void GestureInProgress(uint userId, int userIndex, KinectGestures.Gestures gesture, 
 	                              float progress, KinectWrapper.NuiSkeletonPositionIndex joint, Vector3 screenPos)
 	{
-		//GestureInfo.guiText.text = string.Format("{0} Progress: {1:F1}%", gesture, (progress * 100));
-		if(gesture == KinectGestures.Gestures.Click && progress > 0.3f)
-		{
-			string sGestureText = string.Format ("{0} {1:F1}% complete", gesture, progress * 100);
-			if(GestureInfo != null)
-				GestureInfo.GetComponent<GUIText>().text = sGestureText;
-			
-			progressDisplayed = true;
-		}		
-		else if((gesture == KinectGestures.Gestures.ZoomOut || gesture == KinectGestures.Gestures.ZoomIn) && progress > 0.5f)
-		{
-			string sGestureText = string.Format ("{0} detected, zoom={1:F1}%", gesture, screenPos.z * 100);
-			if(GestureInfo != null)
-				GestureInfo.GetComponent<GUIText>().text = sGestureText;
-			
-			progressDisplayed = true;
-		}
-		else if(gesture == KinectGestures.Gestures.Wheel && progress > 0.5f)
-		{
-			string sGestureText = string.Format ("{0} detected, angle={1:F1} deg", gesture, screenPos.z);
-			if(GestureInfo != null)
-				GestureInfo.GetComponent<GUIText>().text = sGestureText;
-			
-			progressDisplayed = true;
+		for (int i = 0; i < 4; i++) {
+			Gesture [i] = false;
 		}
 	}
 
 	public bool GestureCompleted (uint userId, int userIndex, KinectGestures.Gestures gesture, 
 	                              KinectWrapper.NuiSkeletonPositionIndex joint, Vector3 screenPos)
 	{
-		string sGestureText = gesture + " detected";
-		if(gesture == KinectGestures.Gestures.Click)
-			sGestureText += string.Format(" at ({0:F1}, {1:F1})", screenPos.x, screenPos.y);
+		//string gestureText = gesture;
+		string gestureText = gesture +"";
+		if (GestureInfo != null) {
+			GestureInfo.GetComponent<GUIText> ().text = gestureText;
+			Debug.Log (gestureText);
+			if (gestureText== "SwipeUp"){
+				Gesture [0] = true;}
+			else if (gestureText == "RaiseRightHand"){
+				Gesture [1] = false;}
+			else if (gestureText == "SwipeLeft"){
+				Gesture [2] = true;}
+			else if (gestureText == "SwipeRight"){
+				Gesture [3] = true;}
+
+		}
 		
-		if(GestureInfo != null)
-			GestureInfo.GetComponent<GUIText>().text = sGestureText;
-		
-		progressDisplayed = false;
+		progressDisplayed = false;	
 		
 		return true;
 	}

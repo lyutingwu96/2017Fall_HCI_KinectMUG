@@ -26,4 +26,9 @@ public class PlayingManager : MonoBehaviour {
 		score = score + newScore;
 		ScoreText.text = score.ToString();
 	}
+
+	public void setScore(int pScore){
+		PerfectScore = pScore;
+		GoodScore = Mathf.RoundToInt ( pScore * 0.7f);
+	}
 }
